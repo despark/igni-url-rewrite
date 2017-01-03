@@ -6,5 +6,15 @@
     "minimum-stability": "dev",
     "require": {
         "despark/ignicms": "dev-master"
-    }
+    },
+    "autoload": {
+        "psr-4": {
+            "Despark\\Cms\\UrlRewrite\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Despark\\Tests\\Cms\\UrlRewrite\\": "tests/"
+        }
+    },
 }

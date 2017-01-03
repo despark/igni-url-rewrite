@@ -1,0 +1,10 @@
+{
+    "name": "despark/igni-url-rewrite",
+    "description": "Url rewrite manager for IgniCMS",
+    "type": "library",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "require": {
+        "despark/ignicms": "dev-master"
+    }
+}

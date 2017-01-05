@@ -5,6 +5,7 @@ namespace Despark\Cms\UrlRewrite\Http\Middleware;
 
 
 use Despark\Cms\UrlRewrite\Models\UrlRewrite;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -16,7 +17,11 @@ class UrlRewriteMiddleware
 
         $response = $next($request);
 
-        if ($response->exception && $response->exception instanceof NotFoundHttpException) {
+        if ($response->exception && (
+                $response->exception instanceof NotFoundHttpException ||
+                $response->exception instanceof ModelNotFoundException
+            )
+        ) {
             // We will trigger a redirect if we have one
             $urlRewrite = UrlRewrite::where('from', $request->getPathInfo())->first();
             if ($urlRewrite) {

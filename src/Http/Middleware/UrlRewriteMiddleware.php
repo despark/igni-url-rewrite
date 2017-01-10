@@ -17,7 +17,7 @@ class UrlRewriteMiddleware
 
         $response = $next($request);
 
-        if ($response->exception && (
+        if (isset($response->exception) && $response->exception && (
                 $response->exception instanceof NotFoundHttpException ||
                 $response->exception instanceof ModelNotFoundException
             )
